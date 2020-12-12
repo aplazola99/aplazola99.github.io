@@ -1,0 +1,64 @@
+---
+title: R and Python
+author: Alejandra Plazola
+date: '2020-12-11'
+slug: perros
+categories: []
+tags: []
+description: 'R and Python Together'
+---
+# **R and Python**
+### **Re.sub, Re.spilt, and count_chars**
+Something interesting that I have learned in python is using the RegEx package in python to replace characters/symbols/letters/etc of strings to another character, then spliting my strings, and creating a function count_chars to count the number of words in a string. 
+I used these in HW 11 and decided to create my own example based off of Christmas since it is that time of year again! 
+
+```{r setup, include= FALSE}
+knitr::opts_chunk$set(echo = T)
+library(reticulate)
+```
+
+I made a string with a couple of sentences, and wanted to use re.sub to replace all my punctation marks with <3, just for fun. The <3 is shown down below replacing my puncation marks.
+```{python}
+import re
+strings=r"Christmas is my favorite holiday of the year. I like having my entire family and friends over. Decorating for christmas and baking goodies is some of my favorite things to do. Watching cheesy christmas movies is always a blast! I would say one of my favorite christmas movies is 'How the Grinch Stole Christmas' (2000) with Jim Carrey as the Grinch and the Polar Express. My Favorite line/scene of the Grinch is: The nerve of those Whos! Inviting me done there, on such short notice! Even if I wanted to go my SCHEDULE Wouldn't allow it! One o'clock, Wallow in self pity. Four thirty, Stare into the abyss. Five o'clock, Solve world hunger; Tell no one. Five thirty, Jazz-ercise.Six thirty, dinner with me. I can't cancle that again! Seven o'clock, wrestle with my self-loathing... I'm booked! Well if I bump the loathing to to nine I could still be done in time to lay in bed and stare at the ceiling and slip slowly into madness...But what would I wear !! "
+re.sub("[.,!'()/:;-]",'<3', strings)
+
+```
+Next, I re named my new string that was subsituted to strings1 and then spilt it to prepare for counting individual words in my string.
+```{python}
+strings1=re.sub("[.,!'()/:;-]",'<3', strings)
+re.split("\\s+", strings1)
+```
+
+Lastly, I renamed my spilt string to strings2 and then created a function called **count_chars()** to count how many of each word in my string I had which is shown below. 
+```{python}
+strings2=re.split("\\s+", strings1)
+sentence = "Wow, this is super crazy."
+counts = {}
+for c in sentence:
+    if c in counts:
+        counts[c]+=1
+    else:
+        counts[c]=1
+def count_chars(sentence):
+    counts = {}
+    for c in sentence:
+        if c in counts:
+            counts[c]+=1
+        else:
+            counts[c]=1
+    for c in counts:
+        print(c, "appears", counts[c],"times")
+count_chars(strings2)
+```
+
+Honestly, I struggled with alot with creating functions in python and google was my best friend lol. I think the key thing to remember is having to create a simple equation/filler like the sentence to make sure when doing count and definning my function/constants, it would work because I know I didn't do this correctly the first time! 
+
+Here's a Regex meme:
+
+![](/stor/home/map5667/Website/static/img/r.jpg)   
+
+![Constant meme](/stor/home/map5667/Website/static/img/c.jpg)  
+
+
+
